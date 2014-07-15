@@ -58,3 +58,4 @@ docs/_build/
 
 # VirtualEnv
 venv
+.venv
