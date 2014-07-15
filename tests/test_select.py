@@ -10,7 +10,7 @@ class TestSelectStatement(TestCase):
         setup_db(self)
 
     def test_normal_select(self):
-        user = self.factory.create_user()
+        #user = self.factory.create_user()
         users = self.session.query(User)
         self.assertEqual(1, len(users.all()))
         self.assertEqual(user, users[0])

@@ -8,6 +8,10 @@ from sqlalchemy_simql.dialect.compiler import SimqlTypeCompiler
 class SimqlDialect(default.DefaultDialect):
     name = "simql"
     supports_native_boolean = True
+    supports_alter = False
+    supports_views = False
+    supports_right_nested_joins = False
+    supports_simple_order_by_label = False
 
     statement_compiler = SimqlCompiler
     ddl_compiler = SimqlDDLCompiler
@@ -20,3 +24,9 @@ class SimqlDialect(default.DefaultDialect):
     @classmethod
     def dbapi(cls):
         return dbapi2
+
+    def initialize(self, connection):
+        self.server_version_info = None
+        self.default_schema_name = None
+        self.default_isolation_level = None
+        self.returns_unicode_strings = False
